@@ -1,0 +1,976 @@
+/* =====================================================
+   RAMÈNE TA FOURCHETTE : feuille de style
+   ===================================================== */
+
+:root {
+  --rouge: #cf3a24;
+  --ocre: #f7a600;
+  --ocre-fonce: #a86a00;
+  --ocre-clair: #ffd36b;
+  --vichy: #ecd47a;
+  --papier: #fffbf2;
+  --encre: #231b17;
+  --olive: #6b7d2f;
+  --brun: #3a2a22;
+  --bord: #ecdcc0;
+  --script: 'Great Vibes', cursive;
+  --affiche: 'Anton', 'Arial Black', sans-serif;
+}
+
+/* Pour le russe et l'arabe : polices qui gèrent ces alphabets */
+html[lang="ru"],
+html[lang="ar"] {
+  --script: 'Nunito', sans-serif;
+  --affiche: 'Nunito', sans-serif;
+}
+
+/* ---------- Réglages de base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', Arial, sans-serif;
+  background-color: var(--papier);
+  color: var(--brun);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+html[lang="ar"] body {
+  font-family: 'Cairo', 'Nunito', sans-serif;
+}
+
+/* En arabe, l'espacement entre lettres casserait l'écriture liée */
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+}
+
+/* Le vichy jaune, commun à l'en-tête et à la nappe */
+header,
+.table {
+  background-color: var(--vichy);
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 50%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.5) 50%, transparent 50%);
+  background-size: 56px 56px;
+}
+
+/* ---------- Icônes dessinées en traits ---------- */
+.icone {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+/* =====================================================
+   BARRE D'ANNONCE + CHOIX DE LA LANGUE
+   ===================================================== */
+.annonce {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 24px;
+  padding: 10px 15px;
+  background: var(--rouge);
+  color: white;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.annonce strong {
+  color: var(--ocre-clair);
+}
+
+.selecteur-langue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+#langue {
+  width: auto;
+  margin: 0;
+  padding: 4px 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--encre);
+  background: var(--papier);
+  border: 2px solid var(--encre);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   EN-TÊTE
+   ===================================================== */
+header {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: var(--encre);
+  padding: 95px 20px 100px;
+}
+
+header > :not(.flottant) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Guirlande de fanions accrochée en haut de l'en-tête */
+header .fanions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  height: 42px;
+  overflow: hidden;
+  border-top: 3px solid var(--encre);
+}
+
+.fanions span {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 30px solid var(--rouge);
+  transform-origin: top center;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.3));
+  animation: balance 3s ease-in-out infinite alternate;
+}
+
+/* Logo de l'université */
+.logo-univ {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  margin-bottom: 18px;
+  padding: 8px 18px;
+  background: white;
+  color: var(--encre);
+  text-decoration: none;
+  border: 2px solid var(--encre);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--encre);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.logo-univ:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--encre);
+}
+
+.logo-univ img {
+  display: block;
+  height: 48px;
+  width: auto;
+  max-width: 240px;
+}
+
+.logo-univ-texte {
+  display: none;
+  font-family: var(--affiche);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.logo-univ.sans-image img {
+  display: none;
+}
+
+.logo-univ.sans-image .logo-univ-texte {
+  display: inline;
+}
+
+/* Fourchette – toque – cuillère */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 3rem;
+  color: var(--encre);
+  animation: rebond 2s ease-in-out infinite;
+}
+
+.logo .grand {
+  font-size: 1.35em;
+  color: var(--rouge);
+}
+
+.surtitre {
+  display: inline-block;
+  padding: 4px 16px;
+  background: var(--encre);
+  color: var(--ocre-clair);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 800;
+}
+
+/* Titre façon visuel Canva */
+header h1 {
+  margin: 8px 0 14px;
+  line-height: 1;
+}
+
+.mot-script {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--encre);
+  text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.6);
+}
+
+.mot-ta {
+  display: inline-block;
+  margin-top: 14px;
+  margin-inline-end: 12px;
+  vertical-align: top;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--encre);
+}
+
+.mot-gras {
+  display: inline-block;
+  font-family: 'Anton', 'Arial Black', sans-serif;
+  font-weight: 400;
+  font-size: 5.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rouge);
+  text-shadow: 4px 4px 0 rgba(35, 27, 23, 0.55);
+}
+
+.slogan {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+/* Calendrier avec la date */
+.calendrier {
+  display: inline-block;
+  width: 170px;
+  margin: 28px 0 14px;
+  background: white;
+  color: var(--brun);
+  border: 2px solid var(--encre);
+  border-radius: 16px;
+  overflow: hidden;
+  transform: rotate(-3deg);
+  box-shadow: 5px 5px 0 var(--encre);
+  transition: transform 0.3s;
+}
+
+.calendrier:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.calendrier .mois {
+  display: block;
+  padding: 6px;
+  background: var(--rouge);
+  color: white;
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calendrier .jour-num {
+  display: block;
+  font-family: 'Anton', 'Arial Black', sans-serif;
+  font-size: 4.2rem;
+  line-height: 1.15;
+  color: var(--rouge);
+}
+
+.calendrier .jour-nom {
+  display: block;
+  padding-bottom: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Compte à rebours */
+.compte {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 20px;
+  background: var(--papier);
+  color: var(--encre);
+  font-weight: 800;
+  border: 2px solid var(--encre);
+  border-radius: 30px;
+  box-shadow: 3px 3px 0 var(--encre);
+}
+
+.compte:empty {
+  display: none;
+}
+
+.infos {
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+/* Autocollant */
+.sticker {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 26px;
+  padding: 6px 20px;
+  background: var(--rouge);
+  color: white;
+  font-family: var(--affiche);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 2px solid var(--encre);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 var(--encre);
+  transform: rotate(-3deg);
+}
+
+/* Icônes qui flottent dans l'en-tête */
+.flottant {
+  position: absolute;
+  font-size: 3.2rem;
+  line-height: 1;
+  opacity: 0.9;
+  animation: flotte 5s ease-in-out infinite;
+}
+
+.f1  { left: 6%;   top: 18%; color: var(--rouge); }
+.f2  { left: 16%;  top: 62%; color: var(--encre); animation-delay: 1s; }
+.f3  { left: 28%;  top: 10%; color: var(--olive); animation-delay: 2s; }
+.f4  { right: 28%; top: 14%; color: var(--ocre-fonce); animation-delay: 0.5s; }
+.f5  { right: 15%; top: 58%; color: var(--rouge); animation-delay: 1.5s; }
+.f6  { right: 6%;  top: 20%; color: var(--encre); animation-delay: 2.5s; }
+.f7  { left: 7%;   bottom: 14%; color: var(--rouge); animation-delay: 3s; }
+.f8  { right: 8%;  bottom: 12%; color: var(--ocre-fonce); animation-delay: 3.5s; }
+.f9  { left: 3%;   top: 44%; color: var(--rouge); animation-delay: 1.2s; }
+.f10 { right: 3%;  top: 42%; color: var(--olive); animation-delay: 2.2s; }
+.f11 { left: 24%;  bottom: 9%; color: var(--ocre-fonce); animation-delay: 0.8s; }
+.f12 { right: 24%; bottom: 10%; color: var(--olive); animation-delay: 1.8s; }
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-block;
+  padding: 14px 34px;
+  background-color: var(--rouge);
+  color: white;
+  font-family: var(--affiche);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--encre);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--encre);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bouton:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--encre);
+}
+
+.bouton:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--encre);
+}
+
+.bouton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* =====================================================
+   BANDEAU « BIENVENUE » FAÇON ARDOISE
+   ===================================================== */
+.bienvenue {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  height: 56px;
+  margin: -28px -10px;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: ltr;
+  background: var(--encre);
+  color: var(--papier);
+  border-top: 3px dashed var(--ocre-clair);
+  border-bottom: 3px dashed var(--ocre-clair);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  transform: rotate(-1deg);
+}
+
+.defile {
+  display: inline-block;
+  animation: defile 35s linear infinite;
+}
+
+.defile span {
+  display: inline-block;
+  padding: 0 28px;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.defile span::after {
+  content: "✦";
+  margin-left: 56px;
+  color: var(--ocre);
+}
+
+/* =====================================================
+   NAPPE ET PANNEAU CENTRAL
+   ===================================================== */
+.table {
+  position: relative;
+  padding: 90px 20px 45px;
+}
+
+.table main {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 45px 40px 15px;
+  background: var(--papier);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Scotch qui « tient » le panneau */
+.table main::before,
+.table main::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  z-index: 3;
+  width: 90px;
+  height: 28px;
+  background: rgba(247, 166, 0, 0.8);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.table main::before { left: -22px;  transform: rotate(-35deg); }
+.table main::after  { right: -22px; transform: rotate(35deg); }
+
+section {
+  margin-bottom: 80px;
+}
+
+.table main section:last-of-type {
+  margin-bottom: 30px;
+}
+
+/* ---------- Titres ---------- */
+h2 {
+  margin-bottom: 15px;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: 3.4rem;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--encre);
+  text-shadow: 3px 3px 0 rgba(207, 58, 36, 0.25);
+}
+
+html[lang="ru"] h2,
+html[lang="ar"] h2 {
+  font-weight: 800;
+  font-size: 2.4rem;
+  text-shadow: none;
+}
+
+.intro {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+/* Séparateur de couverts */
+.sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: -30px 0 45px;
+  color: var(--ocre);
+  font-size: 1.2rem;
+}
+
+.sep .icone {
+  font-size: 2rem;
+  color: var(--rouge);
+}
+
+/* ---------- Étapes du concept ---------- */
+.etapes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.etape {
+  --ombre: var(--rouge);
+  padding: 28px 22px;
+  background: white;
+  border: 2px solid var(--encre);
+  border-radius: 10px;
+  box-shadow: 6px 6px 0 var(--ombre);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.etape:nth-child(2) { --ombre: var(--olive); }
+.etape:nth-child(3) { --ombre: var(--encre); }
+
+.etape:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ombre);
+}
+
+.picto {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--ombre);
+}
+
+.etape h3 {
+  margin: 8px 0;
+  font-family: var(--affiche);
+  font-weight: 400;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--rouge);
+}
+
+html[lang="ru"] .etape h3,
+html[lang="ar"] .etape h3,
+html[lang="ru"] .bouton,
+html[lang="ar"] .bouton,
+html[lang="ru"] .sticker,
+html[lang="ar"] .sticker,
+html[lang="ru"] .toasts,
+html[lang="ar"] .toasts {
+  font-weight: 800;
+}
+
+.note {
+  margin-top: 32px;
+  padding: 18px 22px;
+  background: #fff6d6;
+  border-inline-start: 6px solid var(--rouge);
+  border-radius: 10px;
+}
+
+/* ---------- Formulaire ---------- */
+.carte {
+  padding: 35px;
+  background: white;
+  border: 2px solid var(--encre);
+  border-radius: 10px;
+  box-shadow: 8px 8px 0 var(--rouge);
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fffdf7;
+  border: 2px solid #d9c9a0;
+  border-radius: 12px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--rouge);
+  box-shadow: 0 0 0 4px rgba(207, 58, 36, 0.15);
+}
+
+.deux-colonnes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+fieldset {
+  margin-bottom: 20px;
+  padding: 18px;
+  border: 2px solid var(--bord);
+  border-radius: 12px;
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: 700;
+}
+
+.allergenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 8px;
+}
+
+.case {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.case input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--rouge);
+}
+
+.confirmation {
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.confidentialite {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #7a6a60;
+}
+
+/* ---------- Message de retour ---------- */
+.retour {
+  margin-top: 18px;
+  font-weight: 700;
+}
+
+.retour.succes { color: var(--olive); }
+.retour.erreur { color: #b3261e; }
+
+/* =====================================================
+   DÉCORATIONS LATÉRALES (grands écrans)
+   ===================================================== */
+.decor {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (min-width: 1100px) {
+  .decor {
+    display: block;
+  }
+}
+
+/* Drapeaux dessinés en CSS */
+.drapeau {
+  position: absolute;
+  width: 110px;
+  height: 130px;
+}
+
+.drapeau .mat {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 130px;
+  background: var(--encre);
+  border-radius: 3px;
+}
+
+.drapeau .tissu {
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  width: 100px;
+  height: 66px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform-origin: left center;
+  animation: ondule 3s ease-in-out infinite alternate;
+}
+
+.d-fr { top: 60px;     right: -95px; transform: rotate(6deg); }
+.d-es { bottom: -10px; left: -95px;  transform: rotate(-6deg); }
+.d-ru { bottom: -10px; right: -95px; transform: rotate(6deg); }
+
+.d-fr .tissu {
+  background: linear-gradient(90deg, #2646a8 0 33.3%, #ffffff 33.3% 66.6%, #d62a1f 66.6% 100%);
+}
+
+.d-es .tissu {
+  background: linear-gradient(180deg, #b32a24 0 25%, #f5c431 25% 75%, #b32a24 75% 100%);
+}
+
+.d-ru .tissu {
+  background: linear-gradient(180deg, #ffffff 0 33.3%, #2f6bb8 33.3% 66.6%, #e03a3a 66.6% 100%);
+}
+
+/* Couverts et ingrédients dans les marges */
+.ustensile {
+  position: absolute;
+  font-size: 4.2rem;
+  line-height: 1;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.12));
+}
+
+.u-cuillere   { top: 300px;  left: -80px;  color: var(--encre);      transform: rotate(-35deg); }
+.u-baguettes  { top: 560px;  left: -85px;  color: var(--olive);      transform: rotate(20deg); }
+.u-cuillere2  { top: 400px;  right: -80px; color: var(--rouge);      transform: rotate(40deg); }
+.u-fourchette { top: 640px;  right: -80px; color: var(--encre);      transform: rotate(25deg); }
+.u-tomate     { top: 120px;  left: -75px;  color: var(--rouge);      transform: rotate(-15deg); }
+.u-ail        { top: 860px;  right: -75px; color: var(--olive);      transform: rotate(15deg); }
+.u-citron     { top: 1000px; left: -70px;  color: var(--ocre-fonce); transform: rotate(10deg); }
+.u-pain       { top: 1250px; right: -80px; color: var(--brun);       transform: rotate(-10deg); }
+.u-marmite    { top: 1450px; left: -80px;  color: var(--rouge);      transform: rotate(-8deg); }
+
+/* ---------- Les verres levés ---------- */
+.sante {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.verres span {
+  display: inline-block;
+  margin: 0 14px;
+  font-size: 3.8rem;
+  line-height: 1;
+  animation: trinque 2.4s ease-in-out infinite;
+}
+
+.verres .v1 { color: var(--ocre-fonce); }
+.verres .v2 { color: var(--rouge); animation-delay: 0.3s; }
+.verres .v3 { color: var(--olive); animation-delay: 0.6s; }
+
+.toasts {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 22px;
+  background: var(--papier);
+  border: 2px solid var(--encre);
+  border-radius: 30px;
+  box-shadow: 4px 4px 0 var(--encre);
+  font-family: var(--affiche);
+  letter-spacing: 1px;
+  color: var(--rouge);
+}
+
+/* =====================================================
+   PIED DE PAGE
+   ===================================================== */
+footer {
+  padding: 35px 20px;
+  text-align: center;
+  color: white;
+  background: var(--rouge);
+}
+
+footer .logo-univ {
+  margin-bottom: 14px;
+}
+
+.icones-pied {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 12px;
+  font-size: 2rem;
+  color: var(--ocre-clair);
+}
+
+.date-pied {
+  margin-top: 6px;
+  font-weight: 800;
+  color: var(--ocre-clair);
+}
+
+/* ---------- Confettis ---------- */
+.confetti {
+  position: fixed;
+  top: -20px;
+  z-index: 50;
+  pointer-events: none;
+  border-radius: 2px;
+  animation: chute linear forwards;
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+@keyframes balance {
+  from { transform: rotate(-6deg); }
+  to   { transform: rotate(6deg); }
+}
+
+@keyframes flotte {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50%      { transform: translateY(-22px) rotate(8deg); }
+}
+
+@keyframes rebond {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes defile {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes ondule {
+  from { transform: skewY(-4deg) rotate(-2deg); }
+  to   { transform: skewY(4deg) rotate(2deg); }
+}
+
+@keyframes trinque {
+  0%, 100% { transform: rotate(-8deg) translateY(0); }
+  50%      { transform: rotate(8deg) translateY(-10px); }
+}
+
+@keyframes chute {
+  to { transform: translateY(110vh) rotate(720deg); }
+}
+
+/* =====================================================
+   TÉLÉPHONE
+   ===================================================== */
+@media (max-width: 700px) {
+  header {
+    padding: 80px 14px 90px;
+  }
+
+  .logo {
+    font-size: 2.4rem;
+  }
+
+  .mot-script {
+    font-size: 3.8rem;
+  }
+
+  .mot-ta {
+    margin-top: 6px;
+    margin-inline-end: 8px;
+    font-size: 1.2rem;
+  }
+
+  .mot-gras {
+    font-size: 3rem;
+    letter-spacing: 1px;
+  }
+
+  .flottant {
+    font-size: 2.2rem;
+  }
+
+  .f3, .f4, .f9, .f10, .f11, .f12 {
+    display: none;
+  }
+
+  .table {
+    padding: 70px 10px 30px;
+  }
+
+  .table main {
+    padding: 28px 18px 10px;
+  }
+
+  .table main::before { left: -8px; }
+  .table main::after  { right: -8px; }
+
+  h2 {
+    font-size: 2.6rem;
+  }
+
+  html[lang="ru"] h2,
+  html[lang="ar"] h2 {
+    font-size: 2rem;
+  }
+
+  .etapes,
+  .deux-colonnes {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .etapes {
+    gap: 22px;
+  }
+
+  .carte {
+    padding: 22px;
+  }
+
+  .sep {
+    gap: 8px;
+    font-size: 1rem;
+  }
+
+  .sep .icone {
+    font-size: 1.5rem;
+  }
+
+  .verres span {
+    margin: 0 8px;
+    font-size: 2.8rem;
+  }
+
+  .toasts {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Respect des personnes sensibles aux animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+  }
+}

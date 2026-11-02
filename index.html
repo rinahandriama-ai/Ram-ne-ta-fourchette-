@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramène ta fourchette – Atelier dégustation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@600;800&family=Great+Vibes&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Bibliothèque d'icônes (invisible) : on les réutilise ensuite avec <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-fourchette" viewBox="0 0 64 64"><path d="M22 6v14M32 6v14M42 6v14M22 20c0 8 4 10 10 10s10-2 10-10M32 30v28"/></symbol>
+    <symbol id="i-cuillere" viewBox="0 0 64 64"><ellipse cx="32" cy="18" rx="10" ry="13"/><path d="M32 31v27"/></symbol>
+    <symbol id="i-baguettes" viewBox="0 0 64 64"><path d="M20 6l22 52M30 4l20 50"/></symbol>
+    <symbol id="i-toque" viewBox="0 0 64 64"><path d="M18 38a8 8 0 0 1-3-14a11 11 0 0 1 17-12a11 11 0 0 1 17 12a8 8 0 0 1-3 14zM18 38v18h28V38M18 47h28"/></symbol>
+    <symbol id="i-marmite" viewBox="0 0 64 64"><path d="M12 26h40v20a10 10 0 0 1-10 10H22a10 10 0 0 1-10-10zM9 26h46M12 32H6M52 32h6M24 18c-3-4 3-6 0-10M34 18c-3-4 3-6 0-10M44 18c-3-4 3-6 0-10"/></symbol>
+    <symbol id="i-verre-vin" viewBox="0 0 64 64"><path d="M20 6h24c0 14-4 24-12 24S20 20 20 6zM32 30v24M22 57h20"/></symbol>
+    <symbol id="i-flute" viewBox="0 0 64 64"><path d="M26 6h12v20a6 6 0 0 1-12 0zM32 32v22M23 57h18"/></symbol>
+    <symbol id="i-biere" viewBox="0 0 64 64"><path d="M18 14h24l-3 42H21zM18 14c3-7 7-3 10-6 3 3 8-1 11 6M42 22h6a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5h-5"/></symbol>
+    <symbol id="i-assiette" viewBox="0 0 64 64"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="14"/></symbol>
+    <symbol id="i-carnet" viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="5"/><path d="M22 22h20M22 32h20M22 42h12"/></symbol>
+    <symbol id="i-tomate" viewBox="0 0 64 64"><circle cx="32" cy="37" r="20"/><path d="M20 20l12 7 12-7M32 27V12M32 20c-6-6-14-4-16 0M32 20c6-6 14-4 16 0"/></symbol>
+    <symbol id="i-ail" viewBox="0 0 64 64"><path d="M32 6c0 9-16 14-16 32a16 16 0 0 0 32 0C48 20 32 15 32 6zM32 14v44M24 22c-6 8-6 22 0 32M40 22c6 8 6 22 0 32"/></symbol>
+    <symbol id="i-agrume" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="16"/><path d="M32 10v44M10 32h44M16 16l32 32M48 16L16 48"/></symbol>
+    <symbol id="i-pain" viewBox="0 0 64 64"><g transform="rotate(-35 32 32)"><rect x="4" y="22" width="56" height="20" rx="10"/><path d="M18 22l4 20M30 22l4 20M42 22l4 20"/></g></symbol>
+  </svg>
+
+  <!-- Barre d'annonce : date + choix de la langue -->
+  <div class="annonce">
+    <p id="annonce-texte">Rendez-vous le <strong>vendredi 20 novembre 2026</strong> pour un grand repas partagé !</p>
+    <label class="selecteur-langue">
+      <span data-i18n="langue_label">Langue</span>
+      <select id="langue"></select>
+    </label>
+  </div>
+
+  <header>
+    <!-- Guirlande (créée par script.js) -->
+    <div class="fanions" id="fanions"></div>
+
+    <span class="flottant f1"><svg class="icone"><use href="#i-fourchette"/></svg></span>
+    <span class="flottant f2"><svg class="icone"><use href="#i-marmite"/></svg></span>
+    <span class="flottant f3"><svg class="icone"><use href="#i-toque"/></svg></span>
+    <span class="flottant f4"><svg class="icone"><use href="#i-cuillere"/></svg></span>
+    <span class="flottant f5"><svg class="icone"><use href="#i-assiette"/></svg></span>
+    <span class="flottant f6"><svg class="icone"><use href="#i-baguettes"/></svg></span>
+    <span class="flottant f7"><svg class="icone"><use href="#i-verre-vin"/></svg></span>
+    <span class="flottant f8"><svg class="icone"><use href="#i-biere"/></svg></span>
+    <span class="flottant f9"><svg class="icone"><use href="#i-tomate"/></svg></span>
+    <span class="flottant f10"><svg class="icone"><use href="#i-ail"/></svg></span>
+    <span class="flottant f11"><svg class="icone"><use href="#i-agrume"/></svg></span>
+    <span class="flottant f12"><svg class="icone"><use href="#i-flute"/></svg></span>
+
+    <!-- Logo de l'université (fichier à placer dans le dossier images) -->
+    <a class="logo-univ" href="https://univ-avignon.fr" target="_blank" rel="noopener">
+      <img src="images/logo-avignon-universite.png" alt="Avignon Université">
+      <span class="logo-univ-texte">Avignon Université</span>
+    </a>
+
+    <p class="logo" aria-hidden="true">
+      <svg class="icone"><use href="#i-fourchette"/></svg>
+      <svg class="icone grand"><use href="#i-toque"/></svg>
+      <svg class="icone"><use href="#i-cuillere"/></svg>
+    </p>
+
+    <p class="surtitre" data-i18n="surtitre">Atelier dégustation • Mixité des cultures</p>
+
+    <h1>
+      <span class="mot-script">Ramène</span>
+      <span class="mot-ta">ta</span>
+      <span class="mot-gras">fourchette</span>
+    </h1>
+
+    <p class="slogan" data-i18n="slogan">Un repas, mille cultures, une seule grande table !</p>
+
+    <div class="calendrier">
+      <span class="mois" id="cal-mois">Novembre 2026</span>
+      <span class="jour-num" id="cal-jour">20</span>
+      <span class="jour-nom" id="cal-nom">Vendredi</span>
+    </div>
+
+    <p class="compte" id="compte-a-rebours"></p>
+    <p class="infos" id="infos">Heure : À COMPLÉTER • Lieu : À COMPLÉTER</p>
+    <p class="sticker" data-i18n="sticker">Bonne humeur incluse !</p>
+    <a href="#concept" class="bouton" data-i18n="bouton_concept">Découvrir le concept</a>
+  </header>
+
+  <!-- Bandeau « Bienvenue » en plusieurs langues -->
+  <div class="bienvenue">
+    <div class="defile" id="defile">
+      <span>Bienvenue</span>
+      <span>Welcome</span>
+      <span>Bienvenido</span>
+      <span>Benvenuto</span>
+      <span>Willkommen</span>
+      <span>Bem-vindo</span>
+      <span>Karibu</span>
+      <span>مرحبا</span>
+      <span>欢迎</span>
+      <span>ようこそ</span>
+      <span>Добро пожаловать</span>
+      <span>स्वागत है</span>
+    </div>
+  </div>
+
+  <!-- La nappe en vichy jaune qui entoure le panneau crème -->
+  <div class="table">
+
+    <main>
+
+      <!-- Décorations sur les côtés (visibles sur grand écran) -->
+      <div class="decor" aria-hidden="true">
+        <div class="drapeau d-fr"><span class="mat"></span><span class="tissu"></span></div>
+        <div class="drapeau d-es"><span class="mat"></span><span class="tissu"></span></div>
+        <div class="drapeau d-ru"><span class="mat"></span><span class="tissu"></span></div>
+
+        <span class="ustensile u-cuillere"><svg class="icone"><use href="#i-cuillere"/></svg></span>
+        <span class="ustensile u-baguettes"><svg class="icone"><use href="#i-baguettes"/></svg></span>
+        <span class="ustensile u-cuillere2"><svg class="icone"><use href="#i-cuillere"/></svg></span>
+        <span class="ustensile u-fourchette"><svg class="icone"><use href="#i-fourchette"/></svg></span>
+
+        <span class="ustensile u-tomate"><svg class="icone"><use href="#i-tomate"/></svg></span>
+        <span class="ustensile u-ail"><svg class="icone"><use href="#i-ail"/></svg></span>
+        <span class="ustensile u-citron"><svg class="icone"><use href="#i-agrume"/></svg></span>
+        <span class="ustensile u-pain"><svg class="icone"><use href="#i-pain"/></svg></span>
+        <span class="ustensile u-marmite"><svg class="icone"><use href="#i-marmite"/></svg></span>
+      </div>
+
+      <!-- 1. Le concept -->
+      <section id="concept">
+        <h2 data-i18n="concept_titre">Le concept de l'atelier</h2>
+        <p class="intro" data-i18n="concept_intro">
+          Cet atelier célèbre la richesse de nos origines et de nos histoires
+          à travers la cuisine. Chaque participant prépare un plat ou un dessert
+          et le partage avec les autres : on goûte, on échange, on découvre.
+        </p>
+
+        <div class="etapes">
+          <article class="etape">
+            <span class="picto"><svg class="icone"><use href="#i-marmite"/></svg></span>
+            <h3 data-i18n="etape1_titre">1. Choisissez votre plat</h3>
+            <p data-i18n="etape1_texte">Un plat emblématique de votre pays ou de votre culture, ou simplement un plat que vous aimez et que vous avez envie de partager.</p>
+          </article>
+          <article class="etape">
+            <span class="picto"><svg class="icone"><use href="#i-carnet"/></svg></span>
+            <h3 data-i18n="etape2_titre">2. Détaillez les ingrédients</h3>
+            <p data-i18n="etape2_texte">Lors de l'inscription, listez précisément les ingrédients utilisés. C'est essentiel pour protéger les personnes allergiques.</p>
+          </article>
+          <article class="etape">
+            <span class="picto"><svg class="icone"><use href="#i-assiette"/></svg></span>
+            <h3 data-i18n="etape3_titre">3. Partagez le jour J</h3>
+            <p data-i18n="etape3_texte">Apportez votre préparation le jour de l'atelier, racontez-nous son histoire et goûtez celles des autres.</p>
+          </article>
+        </div>
+
+        <p class="note" data-i18n="note_html"><strong>Allergies :</strong> merci d'être le plus précis possible sur les ingrédients et de cocher les allergènes présents dans votre préparation. Chacun pourra ainsi déguster en toute sécurité.</p>
+      </section>
+
+      <!-- Séparateur décoratif -->
+      <div class="sep" aria-hidden="true">
+        <svg class="icone"><use href="#i-fourchette"/></svg><span>✦</span>
+        <svg class="icone"><use href="#i-cuillere"/></svg><span>✦</span>
+        <svg class="icone"><use href="#i-baguettes"/></svg><span>✦</span>
+        <svg class="icone"><use href="#i-cuillere"/></svg><span>✦</span>
+        <svg class="icone"><use href="#i-fourchette"/></svg>
+      </div>
+
+      <!-- 2. L'inscription -->
+      <section id="inscription">
+        <h2 data-i18n="inscription_titre">Je m'inscris</h2>
+        <p class="intro" data-i18n="inscription_intro">Une fois le concept lu, remplissez le formulaire ci-dessous.</p>
+
+        <form id="formulaire" class="carte">
+          <input type="hidden" name="_subject" value="Nouvelle inscription - Ramène ta fourchette">
+
+          <div class="deux-colonnes">
+            <div>
+              <label for="prenom" data-i18n="label_prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" maxlength="50" required>
+            </div>
+            <div>
+              <label for="nom" data-i18n="label_nom">Nom</label>
+              <input type="text" id="nom" name="nom" maxlength="50" required>
+            </div>
+          </div>
+
+          <label for="email" data-i18n="label_email">Adresse e-mail</label>
+          <input type="email" id="email" name="email" maxlength="100" placeholder="pour vous confirmer l'inscription" data-i18n-placeholder="ph_email" required>
+
+          <div class="deux-colonnes">
+            <div>
+              <label for="type" data-i18n="label_type">Vous apportez</label>
+              <select id="type" name="type" required>
+                <option value="" data-i18n="opt_choisir">Choisir...</option>
+                <option value="Plat" data-i18n="opt_plat">Un plat</option>
+                <option value="Dessert" data-i18n="opt_dessert">Un dessert</option>
+              </select>
+            </div>
+            <div>
+              <label for="plat" data-i18n="label_plat">Nom du plat</label>
+              <input type="text" id="plat" name="plat" maxlength="100" placeholder="Ex : Mafé, Tarte tatin..." data-i18n-placeholder="ph_plat" required>
+            </div>
+          </div>
+
+          <label for="origine" data-i18n="label_origine">Pays ou culture d'origine du plat</label>
+          <input type="text" id="origine" name="origine" maxlength="100" placeholder="Ex : Sénégal, Italie, ou « un plat que j'aime »" data-i18n-placeholder="ph_origine" required>
+
+          <label for="ingredients" data-i18n="label_ingredients">Liste détaillée des ingrédients</label>
+          <textarea id="ingredients" name="ingredients" rows="5" maxlength="800" placeholder="Ex : poulet, oignons, farine de blé, beurre de cacahuète, huile d'arachide, sel..." data-i18n-placeholder="ph_ingredients" required></textarea>
+
+          <fieldset>
+            <legend data-i18n="legend_allergenes">Allergènes présents dans votre préparation</legend>
+            <div class="allergenes">
+              <label class="case"><input type="checkbox" name="allergenes" value="Gluten"> <span data-i18n="all_gluten">Gluten (blé, seigle, orge...)</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Crustacés"> <span data-i18n="all_crustaces">Crustacés</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Œufs"> <span data-i18n="all_oeufs">Œufs</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Poisson"> <span data-i18n="all_poisson">Poisson</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Arachides"> <span data-i18n="all_arachides">Arachides</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Soja"> <span data-i18n="all_soja">Soja</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Lait"> <span data-i18n="all_lait">Lait (lactose)</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Fruits à coque"> <span data-i18n="all_fruits_coque">Fruits à coque (noix, amandes...)</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Céleri"> <span data-i18n="all_celeri">Céleri</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Moutarde"> <span data-i18n="all_moutarde">Moutarde</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Sésame"> <span data-i18n="all_sesame">Sésame</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Sulfites"> <span data-i18n="all_sulfites">Sulfites</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Lupin"> <span data-i18n="all_lupin">Lupin</span></label>
+              <label class="case"><input type="checkbox" name="allergenes" value="Mollusques"> <span data-i18n="all_mollusques">Mollusques</span></label>
+            </div>
+          </fieldset>
+
+          <label class="case confirmation">
+            <input type="checkbox" name="concept_lu" value="oui" required>
+            <span data-i18n="concept_lu">J'ai lu et compris le concept de l'atelier.</span>
+          </label>
+
+          <p class="confidentialite" data-i18n="confidentialite">Vos informations servent uniquement à l'organisation de l'atelier.</p>
+
+          <button type="submit" class="bouton" data-i18n="bouton_envoi">Je m'inscris</button>
+          <p id="retour" class="retour" role="status"></p>
+        </form>
+      </section>
+
+    </main>
+
+    <!-- Les verres levés -->
+    <div class="sante">
+      <div class="verres" aria-hidden="true">
+        <span class="v1"><svg class="icone"><use href="#i-flute"/></svg></span>
+        <span class="v2"><svg class="icone"><use href="#i-verre-vin"/></svg></span>
+        <span class="v3"><svg class="icone"><use href="#i-biere"/></svg></span>
+      </div>
+      <p class="toasts">Santé ! · Cheers ! · ¡Salud ! · Prost ! · Salute ! · Saúde ! · 乾杯 !</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p class="logo-pied">
+      <a class="logo-univ" href="https://univ-avignon.fr" target="_blank" rel="noopener">
+        <img src="images/logo-avignon-universite.png" alt="Avignon Université">
+        <span class="logo-univ-texte">Avignon Université</span>
+      </a>
+    </p>
+    <p class="icones-pied" aria-hidden="true">
+      <svg class="icone"><use href="#i-fourchette"/></svg>
+      <svg class="icone"><use href="#i-marmite"/></svg>
+      <svg class="icone"><use href="#i-assiette"/></svg>
+      <svg class="icone"><use href="#i-toque"/></svg>
+      <svg class="icone"><use href="#i-cuillere"/></svg>
+    </p>
+    <p data-i18n="footer_texte">Ramène ta fourchette : ensemble, goûtons la diversité du monde.</p>
+    <p class="date-pied" id="date-pied">Vendredi 20 novembre 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
