@@ -131,7 +131,7 @@
         <span class="ustensile u-marmite"><svg class="icone"><use href="#i-marmite"/></svg></span>
       </div>
 
-      <!--  Le concept -->
+      <!--  explication du concept -->
       <section id="concept">
         <h2 data-i18n="concept_titre">Le concept de l'atelier</h2>
         <p class="intro" data-i18n="concept_intro">
@@ -209,10 +209,10 @@
 
           <label for="origine" data-i18n="label_origine">Pays ou culture d'origine du plat</label>
           <input type="text" id="origine" name="origine" maxlength="100" placeholder="Ex : Sénégal, Italie, ou « un plat que j'aime »" data-i18n-placeholder="ph_origine" required>
-
+<!-- bloc pour la case des ingrédients utilisés --> 
           <label for="ingredients" data-i18n="label_ingredients">Liste détaillée des ingrédients</label>
           <textarea id="ingredients" name="ingredients" rows="5" maxlength="800" placeholder="Ex : poulet, oignons, farine de blé, beurre de cacahuète, huile d'arachide, sel..." data-i18n-placeholder="ph_ingredients" required></textarea>
-
+<!--bloc pour le chois des allergènes -->
           <fieldset>
             <legend data-i18n="legend_allergenes">Allergènes présents dans votre préparation</legend>
             <div class="allergenes">
@@ -232,7 +232,7 @@
               <label class="case"><input type="checkbox" name="allergenes" value="Mollusques"> <span data-i18n="all_mollusques">Mollusques</span></label>
             </div>
           </fieldset>
-
+<!--checkbox de confirmation -->
           <label class="case confirmation">
             <input type="checkbox" name="concept_lu" value="oui" required>
             <span data-i18n="concept_lu">J'ai lu et compris le concept de l'atelier.</span>
