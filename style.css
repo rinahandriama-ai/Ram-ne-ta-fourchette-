@@ -1,7 +1,7 @@
 /* =====================================================
    RAMÈNE TA FOURCHETTE : feuille de style
    ===================================================== */
-
+/* GRAND TITRE, en-tete    */
 :root {
   --rouge: #cf3a24;
   --ocre: #f7a600;
@@ -16,7 +16,7 @@
   --script: 'Great Vibes', cursive;
   --affiche: 'Anton', 'Arial Black', sans-serif;
 }
-
+/*design de cet en-tete , couleur , police , fond,*/
 /* Pour le russe et l'arabe : polices qui gèrent ces alphabets */
 html[lang="ru"],
 html[lang="ar"] {
@@ -30,7 +30,7 @@ html[lang="ar"] {
   padding: 0;
   box-sizing: border-box;
 }
-
+/* bloc de réglage de la page */
 html {
   scroll-behavior: smooth;
 }
@@ -61,7 +61,7 @@ header,
     linear-gradient(rgba(255, 255, 255, 0.5) 50%, transparent 50%);
   background-size: 56px 56px;
 }
-
+/* bloc du design du fond de la page ,couleur , dimension des traits pour le motif vichy*/
 /* ---------- Icônes dessinées en traits ---------- */
 .icone {
   width: 1em;
@@ -89,7 +89,7 @@ header,
   font-size: 0.95rem;
   text-align: center;
 }
-
+/* bloc pour l'annonce du projet , style , police , couleurs*/
 .annonce strong {
   color: var(--ocre-clair);
 }
@@ -101,7 +101,7 @@ header,
   margin-bottom: 0;
   font-weight: 700;
 }
-
+/* bloc pour design selecteur de langue*/
 #langue {
   width: auto;
   margin: 0;
@@ -116,9 +116,7 @@ header,
   cursor: pointer;
 }
 
-/* =====================================================
-   EN-TÊTE
-   ===================================================== */
+/* EN-TÊTE */
 header {
   position: relative;
   overflow: hidden;
@@ -132,7 +130,7 @@ header > :not(.flottant) {
   z-index: 1;
 }
 
-/* Guirlande de fanions accrochée en haut de l'en-tête */
+/* bloc pour la Guirlande de fanions accrochée en haut de l'en-tête */
 header .fanions {
   position: absolute;
   top: 0;
@@ -156,7 +154,7 @@ header .fanions {
   animation: balance 3s ease-in-out infinite alternate;
 }
 
-/* Logo de l'université */
+/* insertion du Logo de l'université */
 .logo-univ {
   display: inline-flex;
   align-items: center;
@@ -201,7 +199,7 @@ header .fanions {
   display: inline;
 }
 
-/* Fourchette – toque – cuillère */
+/*bloc pour insérer les images: Fourchette – toque – cuillère */
 .logo {
   display: flex;
   align-items: center;
@@ -228,7 +226,7 @@ header .fanions {
   font-weight: 800;
 }
 
-/* Titre façon visuel Canva */
+/* bloc du design du titre en bas */
 header h1 {
   margin: 8px 0 14px;
   line-height: 1;
@@ -272,7 +270,7 @@ header h1 {
   font-style: italic;
 }
 
-/* Calendrier avec la date */
+/* bloc pour afficher la date sur un genre de Calendrier */
 .calendrier {
   display: inline-block;
   width: 170px;
@@ -301,7 +299,7 @@ header h1 {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
+/* style pour afficher le mois */
 .calendrier .jour-num {
   display: block;
   font-family: 'Anton', 'Arial Black', sans-serif;
@@ -339,7 +337,7 @@ header h1 {
   font-weight: 700;
 }
 
-/* Autocollant */
+/*bloc pour déco , Autocollants */
 .sticker {
   display: block;
   width: fit-content;
@@ -377,8 +375,9 @@ header h1 {
 .f10 { right: 3%;  top: 42%; color: var(--olive); animation-delay: 2.2s; }
 .f11 { left: 24%;  bottom: 9%; color: var(--ocre-fonce); animation-delay: 0.8s; }
 .f12 { right: 24%; bottom: 10%; color: var(--olive); animation-delay: 1.8s; }
+/* Il y'a 12 icones?*/
 
-/* ---------- Boutons ---------- */
+/* boutons options pour les utilisateurs, dimension,espacement, pas de texte*/
 .bouton {
   display: inline-block;
   padding: 14px 34px;
@@ -412,9 +411,7 @@ header h1 {
   cursor: wait;
 }
 
-/* =====================================================
-   BANDEAU « BIENVENUE » FAÇON ARDOISE
-   ===================================================== */
+/*Bloc pour design du bandeau bienvenue milieux de page*/
 .bienvenue {
   display: flex;
   align-items: center;
@@ -451,9 +448,8 @@ header h1 {
   color: var(--ocre);
 }
 
-/* =====================================================
-   NAPPE ET PANNEAU CENTRAL
-   ===================================================== */
+/* Design fond du milieu de la page*/
+
 .table {
   position: relative;
   padding: 90px 20px 45px;
@@ -468,7 +464,6 @@ header h1 {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Scotch qui « tient » le panneau */
 .table main::before,
 .table main::after {
   content: "";
@@ -492,7 +487,7 @@ section {
   margin-bottom: 30px;
 }
 
-/* ---------- Titres ---------- */
+/*  Titres,couleurs , dimensions */
 h2 {
   margin-bottom: 15px;
   font-family: var(--script);
@@ -533,7 +528,7 @@ html[lang="ar"] h2 {
   color: var(--rouge);
 }
 
-/* ---------- Étapes du concept ---------- */
+/*  Étapes du concept */
 .etapes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -595,7 +590,7 @@ html[lang="ar"] .toasts {
   border-radius: 10px;
 }
 
-/* ---------- Formulaire ---------- */
+/* bloc pour le Formulaire */
 .carte {
   padding: 35px;
   background: white;
@@ -682,7 +677,7 @@ legend {
   color: #7a6a60;
 }
 
-/* ---------- Message de retour ---------- */
+/*Message de retour  */
 .retour {
   margin-top: 18px;
   font-weight: 700;
@@ -772,7 +767,7 @@ legend {
 .u-pain       { top: 1250px; right: -80px; color: var(--brun);       transform: rotate(-10deg); }
 .u-marmite    { top: 1450px; left: -80px;  color: var(--rouge);      transform: rotate(-8deg); }
 
-/* ---------- Les verres levés ---------- */
+/* Les verres levés  */
 .sante {
   margin-top: 50px;
   text-align: center;
@@ -832,7 +827,7 @@ footer .logo-univ {
   color: var(--ocre-clair);
 }
 
-/* ---------- Confettis ---------- */
+/*  Confettis  */
 .confetti {
   position: fixed;
   top: -20px;
@@ -842,9 +837,7 @@ footer .logo-univ {
   animation: chute linear forwards;
 }
 
-/* =====================================================
-   ANIMATIONS
-   ===================================================== */
+/* ANIMATIONS*/
 @keyframes balance {
   from { transform: rotate(-6deg); }
   to   { transform: rotate(6deg); }
